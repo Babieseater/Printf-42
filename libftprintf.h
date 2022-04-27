@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:47:24 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/25 15:23:02 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/27 16:49:07 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINTF_A
-# define LIBPRINTF_A
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -19,7 +19,10 @@
 
 typedef struct s_print
 {
-	
-}	t_print;
+	int	len;
+	int	width;
+}		t_print;
 
-int	ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...);
+
+#endif
