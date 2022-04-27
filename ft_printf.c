@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:45:36 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/27 16:39:07 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:14:41 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ void	ft_putstr(char *str)
 	}
 }
 
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 void	ft_phex(unsigned int x)
 {
 	char	*hex;
@@ -58,16 +68,6 @@ void	ft_phex(unsigned int x)
 		ft_putchar(result[i]);
 		i--;
 	}
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 char	*ft_modchr(const char *s)
@@ -103,7 +103,6 @@ void	ft_putnbr(int nb)
 	}
 }
 
-//This returns cookies
 void	ft_putnbr_unsigned(unsigned int nb)
 {
 	if (nb > 9)
