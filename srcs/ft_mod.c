@@ -6,17 +6,52 @@
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:56:51 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/28 13:32:09 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:10:02 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-const char	*ft_mod(va_list arg, const char *fmt, t_print *src)
+static const char	*ft_str(va_list arg, const char *fmt, t_print *src)
 {
-	int				d;
 	char			*s;
+
+	s = va_arg(arg, char *);
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		src->len += 6;
+	}
+	else
+	{
+		ft_putstr(s);
+		src->len += ft_strlen(s);
+	}
+	return (fmt);
+}
+
+static const char	*ft_hex(va_list arg, const char *fmt, t_print *src)
+{
 	unsigned int	x;
+
+	if (*fmt == 'x')
+	{
+		x = va_arg(arg, unsigned int);
+		ft_phex((unsigned long)x);
+		src->len += ft_intlen((unsigned long)x, *fmt);
+	}
+	else
+	{
+		x = va_arg(arg, unsigned int);
+		ft_puhex((unsigned long)x);
+		src->len += ft_intlen((unsigned long)x, *fmt);
+	}
+	return (fmt);
+}
+
+static const char	*ft_nbr(va_list arg, const char *fmt, t_print *src)
+{
+	int		d;
 
 	if (*fmt == 'd' || *fmt == 'i')
 	{
@@ -30,25 +65,28 @@ const char	*ft_mod(va_list arg, const char *fmt, t_print *src)
 		ft_putnbr_u(d);
 		src->len += ft_intlen_u(d, *fmt);
 	}
+	return (fmt);
+}
+
+const char	*ft_mod(va_list arg, const char *fmt, t_print *src)
+{
+	if (*fmt == 'd' || *fmt == 'i')
+		ft_nbr(arg, fmt, src);
+	else if (*fmt == 'x' || *fmt == 'X')
+		ft_hex(arg, fmt, src);
+	else if (*fmt == 'u')
+		ft_nbr(arg, fmt, src);
 	else if (*fmt == 's')
+		ft_str(arg, fmt, src);
+	else if (*fmt == 'c')
 	{
-		s = va_arg(arg, char *);
-		if (!s)
-		{
-			write(1, "(null)", 6);
-			src->len += 6;
-		}
-		else
-		{
-			ft_putstr(s);
-			src->len += ft_strlen(s);
-		}
+		ft_putchar(va_arg(arg, int));
+		src->len += 1;
 	}
-	else if (*fmt == 'x')
+	else if (*fmt == '%')
 	{
-		x = va_arg(arg, unsigned int);
-		ft_phex((unsigned long)x);
-		src->len += ft_intlen((unsigned long)x, *fmt);
+		ft_putchar('%');
+		src->len += 1;
 	}
 	else
 		return (NULL);
