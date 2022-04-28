@@ -6,7 +6,7 @@
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:45:36 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/27 17:14:41 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:42:11 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,10 +260,10 @@ int	ft_printf(const char *fmt, ...)
 
 int	main()
 {
-	int	res = ft_printf("FakePrintf %i\n", 3333333333);
-	int	resA = ft_printf("FakePrintf %s\n", "0r3");
-	int	res2 = printf("RealPrintf %i\n", 3333333333);
-	int	res3 = printf("RealPrintf %s\n", "0r3");
+	int	res = ft_printf("FakePrintf %u\n", 33333333333);
+	int	resA = ft_printf("FakePrintf %x\n", "0r3");
+	int	res2 = printf("RealPrintf %u\n", 33333333333);
+	int	res3 = printf("RealPrintf %x\n", "0r3");
 
 	printf("\nres = %d\nresA = %d\nres2 = %d\nres3 = %d\n", res, resA, res2, res3);
 	return (0);
