@@ -1,55 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_intlen_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:52:38 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/29 13:36:25 by smayrand         ###   ########.fr       */
+/*   Created: 2022/04/29 13:47:36 by smayrand          #+#    #+#             */
+/*   Updated: 2022/04/29 14:00:45 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static int	ft_len(long int nb, char z)
+int	ft_intlen_p(unsigned long nb, char z)
 {
-	long int	i;
+	unsigned long	i;
+	unsigned long	nbr;
 
 	i = 0;
-	if (z == 'd' || z == 'i')
-	{
-		while (nb)
-		{
-			nb /= 10;
-			i++;
-		}
-	}
-	else
-	{
-		while (nb)
-		{
-			nb /= 16;
-			i++;
-		}
-	}
-	return (i);
-}
-
-int	ft_intlen(long int nb, char z)
-{
-	long int	nbr;
-	long int	i;
-
 	if (!nb)
 		return (1);
-	if (nb < 0)
-		nbr = -nb * 10;
-	else
-		nbr = nb;
-	if (z == 'd' || z == 'i' || z == 'x' || z == 'X')
+	nbr = nb;
+	if (z == 'p')
 	{
-		i = ft_len(nbr, z);
+		while (nbr)
+		{
+			nbr /= 16;
+			i++;
+		}
 		return (i);
 	}
 	return (0);

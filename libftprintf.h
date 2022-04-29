@@ -6,7 +6,7 @@
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:47:24 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/28 14:39:58 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/29 13:50:05 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ typedef struct s_print
 
 int			ft_printf(const char *fmt, ...);
 int			ft_intlen_u(unsigned int nb, char z);
+int			ft_intlen_p(unsigned long nb, char z);
 int			ft_intlen(long int nb, char z);
 char		*ft_modchr(const char *s);
 void		ft_phex(unsigned int x);
 void		ft_puhex(unsigned int x);
+void		ft_ptrhex(unsigned long x);
 void		ft_putchar(char c);
 void		ft_putnbr_u(unsigned int nb);
 void		ft_putnbr(int nb);

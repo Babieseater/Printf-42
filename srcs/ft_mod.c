@@ -6,7 +6,7 @@
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:56:51 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/28 16:10:02 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:00:58 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ static const char	*ft_hex(va_list arg, const char *fmt, t_print *src)
 	return (fmt);
 }
 
+static const char	*ft_ptr(va_list arg, const char *fmt, t_print *src)
+{
+	unsigned long	x;
+
+	x = va_arg(arg, unsigned long);
+	ft_ptrhex((unsigned long)x);
+	src->len += ft_intlen_p((unsigned long)x, *fmt) + 2;
+	return (fmt);
+}
+
 static const char	*ft_nbr(va_list arg, const char *fmt, t_print *src)
 {
 	int		d;
@@ -74,6 +84,8 @@ const char	*ft_mod(va_list arg, const char *fmt, t_print *src)
 		ft_nbr(arg, fmt, src);
 	else if (*fmt == 'x' || *fmt == 'X')
 		ft_hex(arg, fmt, src);
+	else if (*fmt == 'p')
+		ft_ptr(arg, fmt, src);
 	else if (*fmt == 'u')
 		ft_nbr(arg, fmt, src);
 	else if (*fmt == 's')
