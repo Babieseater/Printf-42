@@ -6,14 +6,11 @@
 /*   By: smayrand <smayrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:45:36 by smayrand          #+#    #+#             */
-/*   Updated: 2022/04/28 13:36:49 by smayrand         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:21:44 by smayrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
 
 const char	*ft_read(t_print *src, const char *fmt)
 {
